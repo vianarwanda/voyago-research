@@ -171,12 +171,12 @@ Model paling ideal untuk platform travel adalah **hybrid 4-layer**:
 │  Layer 3: USER TAGS (customer-generated)             │
 │  ├── #honeymoon #instagrammable #worthit             │
 │  └── #budgetfriendly #hiddengemjogja                 │
-│  → Dipakai untuk: discovery, social proof             │
+│  → Dipakai untuk: discovery, social proof            │
 ├──────────────────────────────────────────────────────┤
 │  Layer 4: AI-INFERRED TAGS (from reviews/photos)     │
 │  ├── sentiment: positive, mixed                      │
 │  └── auto-detected: scenic, crowded, accessible      │
-│  → Dipakai untuk: recommendation engine               │
+│  → Dipakai untuk: recommendation engine              │
 └──────────────────────────────────────────────────────┘
 ```
 
