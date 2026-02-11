@@ -1,0 +1,7 @@
+# Ignore everything
+*
+
+# Allow these files
+!.gitignore
+!taxonomy-models.md
+!\[External\ use\]\ Viator\ tag\ taxonomy\ tree.xlsx
