@@ -73,7 +73,7 @@ Produk travel itu **multi-dimensional** — satu pengalaman bisa relevan di bany
 | ---------------- | ------------------------------- | ---------------------------------------- |
 | **Yang dijual**  | Barang fisik (tangible)         | Pengalaman/jasa (intangible)             |
 | **Inventory**    | Stok fisik, bisa habis permanen | Availability per tanggal & slot waktu    |
-| **Delivery**     | Dikirim ke alamat               | Datang ke lokasi / e-voucher             |
+| **Delivery**     | Dikirim ke alamat               | Datang ke lokasi / e-voucher / e-ticket  |
 | **Variant**      | Warna, Ukuran, Model            | Tanggal, Waktu, Tipe tiket, Jumlah orang |
 | **Kategorisasi** | 1 produk = 1 category (tree)    | 1 produk = banyak tags (mesh)            |
 | **Pricing**      | Harga tetap + diskon            | Dynamic per tanggal & pax type           |
@@ -255,10 +255,11 @@ VOYAGO CATEGORIES
 │   └── Cultural Activity
 │
 └── 🗺️ Tour
-    ├── Day Trip
     ├── City Tour
     ├── Food Tour
+    ├── Nature & Trekking
     ├── Boat & Cruise
+    ├── Cultural Tour
     └── Multi-day Tour
 ```
 
@@ -288,6 +289,11 @@ VOYAGO SIGNALS
 │   ├── instagrammable
 │   └── hidden-gem
 │
+├── 🕐 Duration Signals
+│   ├── half-day       (< 4 jam)
+│   ├── full-day       (4-10 jam)
+│   └── multi-day      (> 1 hari)
+│
 ├── 🏷️ Campaign Signals
 │   ├── christmas
 │   ├── ramadhan
@@ -295,11 +301,57 @@ VOYAGO SIGNALS
 │   ├── new-year
 │   └── chinese-new-year
 │
-└── ⭐ Quality Signals
-    ├── top-rated
-    ├── best-value
-    ├── trending
-    └── voyago-pick
+├── ⭐ Quality Signals
+│   ├── top-rated
+│   ├── best-value
+│   ├── trending
+│   └── voyago-pick
+│
+│   ─── Potential Future Groups ───
+│
+├── ♿ Accessibility Signals
+│   ├── wheelchair-accessible
+│   ├── elderly-friendly
+│   ├── hearing-impaired
+│   └── visually-impaired
+│
+├── 🌿 Sustainability Signals
+│   ├── eco-friendly
+│   ├── carbon-neutral
+│   ├── community-based
+│   └── wildlife-responsible
+│
+├── 👥 Audience Signals
+│   ├── solo-traveler
+│   ├── couples
+│   ├── corporate
+│   ├── bachelorette
+│   └── group-friendly
+│
+├── 🍽️ Inclusion Signals
+│   ├── meal-included
+│   ├── transport-included
+│   ├── equipment-provided
+│   └── guide-included
+│
+├── ☔ Practical Signals
+│   ├── indoor
+│   ├── outdoor
+│   ├── rain-or-shine
+│   └── dress-code
+│
+├── 🛡️ Safety Signals
+│   ├── insured
+│   ├── licensed-operator
+│   ├── small-group
+│   └── covid-safe
+│
+└── 💰 Price Tier Signals
+    ├── budget
+    ├── mid-range
+    ├── premium
+    ├── luxury
+    └── early-bird
 ```
 
 ### Contoh Penerapan
@@ -307,8 +359,8 @@ VOYAGO SIGNALS
 ```
 Bali Sunrise Trekking at Mt. Batur
 ─────────────────────────────────────
-Category:  Tour > Day Trip
-Signals:   ⭐ top-rated  🎭 adventurous  🎯 hotel-pickup  🎯 english-guided
+Category:  Tour > Nature & Trekking
+Signals:   🕐 full-day  ⭐ top-rated  🎭 adventurous  🎯 hotel-pickup  🎯 english-guided
 ```
 
 ```
@@ -322,7 +374,14 @@ Signals:   🎯 skip-the-line  ⭐ best-value  🏷️ christmas
 Bangkok Pad Thai Cooking Class
 ─────────────────────────────────────
 Category:  Experience > Cooking Class
-Signals:   🎯 halal-friendly  🎭 instagrammable  ⭐ voyago-pick  🎯 free-cancellation
+Signals:   🕐 half-day  🎯 halal-friendly  🎭 instagrammable  ⭐ voyago-pick  🎯 free-cancellation
+```
+
+```
+3-Day Jogja Food Tour
+─────────────────────────────────────
+Category:  Tour > Food Tour
+Signals:   🕐 multi-day  🎯 hotel-pickup  🎭 instagrammable  🎯 halal-friendly
 ```
 
 ### Mapping dari Sumber Data
@@ -332,6 +391,7 @@ Signals:   🎯 halal-friendly  🎭 instagrammable  ⭐ voyago-pick  🎯 free-
 | **Category**         | Main parent + child tags → di-map ke Voyago tree               | Top-level categories → di-map ke Voyago tree                |
 | **Feature Signals**  | Filtering tags (skip-the-line, kid-friendly)                   | Filter attributes (instant-confirmation, free-cancellation) |
 | **Vibe Signals**     | Sebagian dari tags (Unique Experiences, Once in a Lifetime)    | ❌ Perlu enrichment manual                                   |
+| **Duration Signals** | Dari product duration data                                     | Dari product duration data                                  |
 | **Campaign Signals** | Seasonal tags (Christmas, Halloween, dsb)                      | ❌ Perlu enrichment manual                                   |
 | **Quality Signals**  | Merchandising tags di back-end (Top Product, Low Cancellation) | Marketing labels (Klook's Choice, Best Price)               |
 
