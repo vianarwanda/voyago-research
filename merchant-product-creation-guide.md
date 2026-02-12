@@ -23,21 +23,42 @@ Daripada kasih dropdown teknis, kita tanya merchant dengan bahasa manusia.
 
 ---
 
-## 2. Validation Check (Double Check biar gak salah kamar)
+## 2. Validation Check (Jawab Pertanyaan Ini)
 
-Setelah merchant pilih, system validasi satu kali lagi.
+System akan mengajukan beberapa pertanyaan kunci untuk memastikan kategori sudah tepat.
 
-### Skenario A: Pilih "Tiket Masuk" 🎫
-*System check:*
-> "Apakah tamu perlu **reservasi jam kedatangan** secara spesifik?"
-> - **Tidak** → Confirm **Attraction**.
-> - **Ya** → Saran: *"Sebaiknya pilih **Activity**, karena produk Anda butuh slot waktu."*
+### A. Jika pilih "Tiket Masuk" 🎫
+**Q1: "Apakah tamu perlu reservasi jam kedatangan spesifik?"**
+> *   **Tidak** → Lanjut.
+> *   **Ya** → *Warning:* "Sebaiknya pindah ke **Activity** agar fitur slot waktu aktif."
 
-### Skenario B: Pilih "Aktivitas" 🏃
-*System check:*
-> "Apakah aktivitas ini melibatkan **pindah-pindah lokasi** (sightseeing) seharian?"
-> - **Tidak** → Confirm **Activity**.
-> - **Ya** → Saran: *"Sebaiknya pilih **Tour**, karena produk Anda punya rute perjalanan."*
+**Q2: "Apakah tiket ini sudah termasuk pemandu (guide)?"**
+> *   **Tidak** → Lanjut.
+> *   **Ya** → *Warning:* "Jika dipandu, produk ini lebih cocok masuk **Tour** atau **Activity**."
+
+**Q3: "Apakah ini hanya voucher makan (Dining)?"**
+> *   **Ya** → *Warning:* "Untuk saat ini, Voucher Makan masuk ke kategori **Activity** (Dining)."
+
+---
+
+### B. Jika pilih "Aktivitas" 🏃
+**Q1: "Apakah aktivitas ini pindah-pindah lokasi (sightseeing) seharian?"**
+> *   **Tidak** → Lanjut.
+> *   **Ya** → *Warning:* "Ini terdengar seperti **Tour**. Pindah kategori agar ada fitur Itinerary."
+
+**Q2: "Apakah tamu hanya menyewa alat (Rental) tanpa instruktur?"**
+> *   **Ya** → Lanjut (Pilih sub-kategori: *Rental* di langkah berikutnya).
+> *   **Tidak** → Lanjut.
+
+---
+
+### C. Jika pilih "Tur" 🗺️
+**Q1: "Apakah durasi tur lebih dari 24 jam (menginap)?"**
+> *   **Tidak** → Lanjut (Day Tour).
+> *   **Ya** → *Note:* "Produk akan ditandai sebagai **Multi-day Tour**."
+
+**Q2: "Apakah ini Open Trip (digabung orang lain) atau Private?"**
+> *   *Note:* Merchant akan diminta set varian harga untuk *Shared* atau *Private* di langkah selanjutnya.
 
 ---
 
