@@ -4,4 +4,5 @@
 # Allow these files
 !.gitignore
 !taxonomy-models.md
-!\[External\ use\]\ Viator\ tag\ taxonomy\ tree.xlsx
+!\[External\ use\]\ Viator\ tag\ taxonomy\ tree.xlsx\
+!merchant-product-creation-guide.md
